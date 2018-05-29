@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xiaochao.mycfms.model.sys.Users;
 import com.xiaochao.mycfms.service.iface.sys.UsersService;
+import com.xiaochao.mycfms.util.domain.Result;
 
 @Controller
 @RequestMapping("/service/users/")
@@ -20,9 +21,11 @@ public class UserController {
 	
 	@RequestMapping("queryUser")
 	@ResponseBody
-	public Users queryUser(String userId) {
+	public Result queryUser(String userId) {
+		Result result=new Result();
 		Users user=usersService.selectUser(Integer.parseInt(userId));
-		return user;
+		result.getBody().put("user", user);
+		return result;
 	}
 	
 	@RequestMapping("queryUserJSP")
