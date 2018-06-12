@@ -18,6 +18,7 @@
 	http://www.springframework.org/schema/util
     http://www.springframework.org/schema/util/spring-util.xsd">
 	<context:component-scan base-package="com.xiaochao.mycfms"></context:component-scan>
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<mvc:annotation-driven />
 	<mvc:cors>
 		<mvc:mapping path="/**" />

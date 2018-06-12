@@ -7,24 +7,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.xiaochao.mycfms.model.sys.Users;
 import com.xiaochao.mycfms.service.iface.sys.UsersService;
 import com.xiaochao.mycfms.util.domain.Result;
 
-@Controller
+@RestController
 @RequestMapping("/service/users/")
 public class UserController {
     
 	@Autowired
 	public UsersService usersService;
 	
+	/**
+	 * 查询用户信息
+	 * @author nana.chao
+	 * @param userId
+	 * @return
+	 */
 	@RequestMapping("queryUser")
-	@ResponseBody
+	//@ResponseBody 
 	public Result queryUser(String userId) {
 		Result result=new Result();
+		System.out.println("userId:"+userId);
 		Users user=usersService.selectUser(Integer.parseInt(userId));
-		result.getBody().put("user", user);
+		result.getBody() .put("user", user);
 		return result;
 	}
 	

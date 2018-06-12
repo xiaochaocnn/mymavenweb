@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaochao.mycfms.dao.sys.OperatorLogMapper" >
+  <resultMap id="BaseResultMap" type="com.xiaochao.mycfms.model.sys.OperatorLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="opt_no" property="optNo" jdbcType="VARCHAR" />
+    <result column="opt_name" property="optName" jdbcType="VARCHAR" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="sment_no" property="smentNo" jdbcType="CHAR" />
+    <result column="opt_object" property="optObject" jdbcType="CHAR" />
+    <result column="opt_date" property="optDate" jdbcType="CHAR" />
+    <result column="opt_time" property="optTime" jdbcType="CHAR" />
+    <result column="opt_result" property="optResult" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, opt_no, opt_name, dept_name, sment_no, opt_object, opt_date, opt_time, opt_result
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_operator_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_operator_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiaochao.mycfms.model.sys.OperatorLog" >
+    insert into t_operator_log (id, opt_no, opt_name, 
+      dept_name, sment_no, opt_object, 
+      opt_date, opt_time, opt_result)
+    values (#{id,jdbcType=INTEGER}, #{optNo,jdbcType=VARCHAR}, #{optName,jdbcType=VARCHAR}, 
+      #{deptName,jdbcType=VARCHAR}, #{smentNo,jdbcType=CHAR}, #{optObject,jdbcType=CHAR}, 
+      #{optDate,jdbcType=CHAR}, #{optTime,jdbcType=CHAR}, #{optResult,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaochao.mycfms.model.sys.OperatorLog" >
+    insert into t_operator_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="optNo != null" >
+        opt_no,
+      </if>
+      <if test="optName != null" >
+        opt_name,
+      </if>
+      <if test="deptName != null" >
+        dept_name,
+      </if>
+      <if test="smentNo != null" >
+        sment_no,
+      </if>
+      <if test="optObject != null" >
+        opt_object,
+      </if>
+      <if test="optDate != null" >
+        opt_date,
+      </if>
+      <if test="optTime != null" >
+        opt_time,
+      </if>
+      <if test="optResult != null" >
+        opt_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="optNo != null" >
+        #{optNo,jdbcType=VARCHAR},
+      </if>
+      <if test="optName != null" >
+        #{optName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="smentNo != null" >
+        #{smentNo,jdbcType=CHAR},
+      </if>
+      <if test="optObject != null" >
+        #{optObject,jdbcType=CHAR},
+      </if>
+      <if test="optDate != null" >
+        #{optDate,jdbcType=CHAR},
+      </if>
+      <if test="optTime != null" >
+        #{optTime,jdbcType=CHAR},
+      </if>
+      <if test="optResult != null" >
+        #{optResult,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaochao.mycfms.model.sys.OperatorLog" >
+    update t_operator_log
+    <set >
+      <if test="optNo != null" >
+        opt_no = #{optNo,jdbcType=VARCHAR},
+      </if>
+      <if test="optName != null" >
+        opt_name = #{optName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="smentNo != null" >
+        sment_no = #{smentNo,jdbcType=CHAR},
+      </if>
+      <if test="optObject != null" >
+        opt_object = #{optObject,jdbcType=CHAR},
+      </if>
+      <if test="optDate != null" >
+        opt_date = #{optDate,jdbcType=CHAR},
+      </if>
+      <if test="optTime != null" >
+        opt_time = #{optTime,jdbcType=CHAR},
+      </if>
+      <if test="optResult != null" >
+        opt_result = #{optResult,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaochao.mycfms.model.sys.OperatorLog" >
+    update t_operator_log
+    set opt_no = #{optNo,jdbcType=VARCHAR},
+      opt_name = #{optName,jdbcType=VARCHAR},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      sment_no = #{smentNo,jdbcType=CHAR},
+      opt_object = #{optObject,jdbcType=CHAR},
+      opt_date = #{optDate,jdbcType=CHAR},
+      opt_time = #{optTime,jdbcType=CHAR},
+      opt_result = #{optResult,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
