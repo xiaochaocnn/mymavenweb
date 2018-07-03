@@ -148,6 +148,18 @@ public final class DateUtil {
     }
 
     /**
+     * @Title: getCurDateTime
+     * @Description: 获取计算机系统的当前日期并格式化成14位
+     * @return
+     * @author zhangweirong
+     */
+    public static String getCurDateTime(String parten) {
+        if (null == parten || "".equals(parten)) {
+            parten = "yyyy-MM-dd HH:mm:ss.SSS";
+        }
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(parten));
+    }
+    /**
      * @Title: getFutureDateTime
      * @Description: 获取当前时间以后的第N分钟的14位时间
      * @param minutes 分钟偏移量

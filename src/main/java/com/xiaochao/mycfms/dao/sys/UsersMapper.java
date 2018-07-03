@@ -1,5 +1,7 @@
 package com.xiaochao.mycfms.dao.sys;
 
+import java.util.List;
+
 import com.xiaochao.mycfms.model.sys.Users;
 
 public interface UsersMapper {
@@ -14,4 +16,6 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+    
+    int insertBatch(List<Users> listUsers);
 }

@@ -25,6 +25,14 @@
     values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
       )
   </insert>
+  <insert id="insertBatch" parameterType="java.util.List">
+     insert into users(user_id,user_name,password) values
+     <foreach collection="list" item="item" index="index" separator=",">
+     (#{item.userId,jdbcType=INTEGER}, #{item.userName,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}
+     )
+     </foreach>
+  
+  </insert>
   <insert id="insertSelective" parameterType="com.xiaochao.mycfms.model.sys.Users" >
     insert into users
     <trim prefix="(" suffix=")" suffixOverrides="," >
